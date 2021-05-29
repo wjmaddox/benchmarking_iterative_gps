@@ -1,0 +1,23 @@
+name: gp-bfgs
+channels:
+  - conda-forge
+  - anaconda
+dependencies:
+  # - cmake  ## Only install on demand.
+  - python
+  - pip
+  - pip:
+    - jupyterlab
+    - ipywidgets
+    - tqdm
+    - fire
+    - seaborn
+    - wandb
+    - numpy
+    - scipy
+    - pandas
+    - torch
+    - scikit-learn
+    - pykeops
+    - gpytorch
+    - botorch
