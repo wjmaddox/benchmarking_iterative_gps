@@ -1,4 +1,5 @@
 import torch
+import time
 import gpytorch
 
 from botorch.models import SingleTaskGP
@@ -88,7 +89,11 @@ class DefaultGPyTorchModel(object):
         )
 
         mll = ExactMarginalLogLikelihood(self.model.likelihood, self.model)
+        start = time.time()
         self.optimizer(mll)
+        end = time.time()
+        print("Model fitting time: ", end - start)
+        self.fitting_time = end - start
 
     def predict(self, Xs):
         # nuke caches so that we can use the same model for different root decomp sizes
@@ -97,8 +102,17 @@ class DefaultGPyTorchModel(object):
         # now set in posterior mode
         self.model.eval()
         self.model.likelihood.eval()
+        start = time.time()
+        
         posterior = self.model.posterior(torch.tensor(Xs, device=self.device, dtype=self.dtype))
-        return posterior.mean.detach().cpu().numpy(), posterior.variance.detach().cpu().numpy()
+        m = posterior.mean.detach().cpu().numpy()
+        v = posterior.variance.detach().cpu().numpy()
+        end = time.time()
+        print("Model prediction time: ", end - start)
+        self.pred_time = end - start
+        
+        return m, v
+
 
 class CholeskyGP(DefaultGPyTorchModel):
     def __init__(self, *args, **kwargs):

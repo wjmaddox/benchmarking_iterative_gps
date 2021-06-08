@@ -47,6 +47,11 @@ def prediction_loop(model, data):
 
     res['test_rmse'] = np.average(d**2)**0.5
     res['test_rmse_unnormalized'] = np.average(du**2)**0.5
+    
+    # report timing results
+    res['fitting_time'] = model.fitting_time
+    res['prediction_time'] = model.pred_time
+
     return res
 
 def main(dataset, split, seed, device, dtype, with_adam, is_cholesky, cg_tolerance, precond_size, database_path=None):
@@ -87,6 +92,9 @@ if __name__ == "__main__":
     from string import ascii_lowercase
     string = ''.join(choice(ascii_lowercase) for i in range(10))
     logging.basicConfig(filename="logs/"+string+".log", level=logging.DEBUG)
+
+    # import pykeops
+    # pykeops.clean_pykeops()
 
     args = parse_args()
     res_list = main(**vars(args))
