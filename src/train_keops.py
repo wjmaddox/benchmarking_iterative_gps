@@ -175,5 +175,10 @@ def main(seed=None, device=0, dataset=None, data_dir=None,
 if __name__ == "__main__":
   os.environ['WANDB_MODE'] = os.environ.get('WANDB_MODE', default='dryrun')
 
-  import fire
-  fire.Fire(main)
+  import pykeops
+  import tempfile
+  with tempfile.TemporaryDirectory() as dirname:
+    pykeops.set_bin_folder(dirname)
+
+    import fire
+    fire.Fire(main)
