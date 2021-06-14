@@ -16,15 +16,14 @@ parameters:
       - 2.5
   lbfgs:
     values:
-      # - 0
+      - 0
       - 1
   lr:
     values:
-      # - 0.1
+      - 0.1
       - 1.0
   lanc_iter:
     values:
-      - 0
       - 15
       - 100
       - 500
