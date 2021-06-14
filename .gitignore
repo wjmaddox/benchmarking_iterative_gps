@@ -133,3 +133,6 @@ wandb/
 
 # Slurm
 *.out
+
+# Output PDFs
+*.pdf

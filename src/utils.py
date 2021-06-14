@@ -7,7 +7,6 @@ import itertools
 import os
 import random
 import numpy as np
-import wandb
 
 
 def set_seeds(seed=None):

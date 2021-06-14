@@ -1,0 +1,51 @@
+name: keops
+method: grid
+parameters:
+  dataset:
+    values:
+      - bike
+      - elevators
+      - pol_all
+      - protein
+  epochs:
+    value: 2000
+  p_epochs:
+    value: 200
+  nu:
+    values:
+      - 2.5
+  lbfgs:
+    values:
+      # - 0
+      - 1
+  lr:
+    values:
+      # - 0.1
+      - 1.0
+  lanc_iter:
+    values:
+      - 0
+      - 15
+      - 100
+      - 500
+      - 1000
+      - 2500
+      - 5000
+      - 10000
+  pre_size:
+    values:
+      - 15
+      - 50
+      - 100
+  cg_tol:
+    values:
+      - 1e-3
+      - 1e-2
+      - 1e-1
+      - 1.0
+program: src/train_keops.py
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args}
