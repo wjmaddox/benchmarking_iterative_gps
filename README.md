@@ -4,6 +4,7 @@ This is a code repository for the paper "When are Iterative GPs Numerically Accu
 
 ### Citation
 
+```
 @article{maddox2021iterative,
       title={When are Iterative Gaussian Processes Reliably Accurate?}, 
       author={Wesley J. Maddox and Sanyam Kapoor and Andrew Gordon Wilson},
@@ -11,15 +12,16 @@ This is a code repository for the paper "When are Iterative GPs Numerically Accu
       publication={ICML OPTML Workshop},
       url={https://arxiv.org/abs/2112.15246},
 }
+```
 
 ## Models
 
 Our models, both iterative and cholesky-based, are in the models/gpytorch/models.py.
 
 The scripts that can be used to reproduce our results are: 
-- models/gpytorch/runner.py
-- notebooks/iterative_gps_reliability.ipynb (explainer)
-- src/train_keops.py (for optimization trajectories)
+- `models/gpytorch/runner.py`
+- `notebooks/iterative_gps_reliability.ipynb` (explainer)
+- `src/train_keops.py` (for optimization trajectories)
 
 ## Repository References
 
